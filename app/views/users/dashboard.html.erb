@@ -1,2 +1,127 @@
-Hello <%= @user.username %>
-<%= link_to "Logout", logout_path, method: :delete, class: "nav-link" %>
+<div class="ui grid stackable">
+  <div class="three wide column"></div>
+  <div class="ten wide column" style="margin-top: 2vh;">
+    <div class="ui very padded segment stacked" style="background: white; opacity: 0.9">
+      <h2 class="ui header center aligned" style="margin-bottom: 5vh;">
+        <img class="ui circular image" src="https://semantic-ui.com/images/avatar2/large/patrick.png">
+        <div class="content">
+          pablof300
+        </div>
+      </h2>
+      <div class="ui two column grid">
+        <div class="column">
+          <div class="ui raised segment center aligned">
+            <div class="floating ui red label large">22</div>
+            <h2 class="ui header">
+              Current Trades
+            </h2>
+            <h6 style="padding: 0; margin-top: -2vh;">All the trades you've agreed on</h6>
+            <div class="ui animated button basic purple" tabindex="0">
+              <div class="visible content">You have 13 trades to view</div>
+              <div class="hidden content">
+                <i class="right arrow icon"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui raised segment center aligned">
+            <div class="floating ui red label large">22</div>
+            <h2 class="ui header">
+              New Messages
+            </h2>
+            <h6 style="padding: 0; margin-top: -2vh;">All the trades you've agreed on</h6>
+            <div class="ui animated button basic green" tabindex="0">
+              <div class="visible content">You have 2 messages to view</div>
+              <div class="hidden content">
+                <i class="right arrow icon"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui one column grid">
+        <div class="column">
+          <div class="ui raised segment center aligned">
+            <h2 class="ui header" style="margin-top:1vh; margin-bottom: 0;">What do you need from your neighbors?</h2>
+            <br />
+
+            <div class="ui floating dropdown labeled search icon button">
+  <i class="world icon"></i>
+  <span class="text">Select Language</span>
+  <div class="menu">
+    <div class="item">Arabic</div>
+    <div class="item">Chinese</div>
+    <div class="item">Danish</div>
+    <div class="item">Dutch</div>
+    <div class="item">English</div>
+    <div class="item">French</div>
+    <div class="item">German</div>
+    <div class="item">Greek</div>
+    <div class="item">Hungarian</div>
+    <div class="item">Italian</div>
+    <div class="item">Japanese</div>
+    <div class="item">Korean</div>
+    <div class="item">Lithuanian</div>
+    <div class="item">Persian</div>
+    <div class="item">Polish</div>
+    <div class="item">Portuguese</div>
+    <div class="item">Russian</div>
+    <div class="item">Spanish</div>
+    <div class="item">Swedish</div>
+    <div class="item">Turkish</div>
+    <div class="item">Vietnamese</div>
+  </div>
+            </div>
+
+            <br />
+
+            <div class="ui animated button basic teal" id="cats" tabindex="0">
+              <div class="visible content">Place a request</div>
+              <div class="hidden content">
+                <i class="right arrow icon"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui horizontal divider" style="margin-top: 5vh;">
+        Your neighbors' requests
+      </div>
+
+      <table class="ui four column table selectable inverted">
+        <thead>
+          <tr><th class="">Neighbor</th>
+          <th class="center aligned">Item</th>
+          <th class="right aligned"></th>
+          <th class="right aligned">Do you have some to spare?</th>
+          <th></th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td>John</td>
+            <td class="center aligned">Pack of 12 eggs</td>
+            <td></td>
+            <td class="center aligned"><button class="ui button red basic">No</td>
+            <td class="left aligned"><button class="ui button green basic">Yes</td>
+          </tr>
+          <tr>
+            <td>John</td>
+            <td class="center aligned">Pack of 12 eggs</td>
+            <td></td>
+            <td class="center aligned"><button class="ui button red basic">No</td>
+            <td class="left aligned"><button class="ui button green basic">Yes</td>
+          </tr>
+          <tr>
+            <td>John</td>
+            <td class="center aligned">Pack of 12 eggs</td>
+            <td></td>
+            <td class="center aligned"><button class="ui button red basic">No</td>
+            <td class="left aligned"><button class="ui button green basic">Yes</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

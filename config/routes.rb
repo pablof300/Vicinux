@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :messages
+  resources :exchanges
+  resources :requests
+  resources :categories
   resources :items
   resources :communities
   resources :users

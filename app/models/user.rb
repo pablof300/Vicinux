@@ -1,10 +1,11 @@
 class User < ApplicationRecord
-  #has_many :requests
-  #has_many :items
-  #has_many :reviews
-  #has_many :exchanges
+  has_many :requests
+  has_many :items
+  has_many :reviews
+  has_many :exchange_joins
+  has_many :exchanges, through: :exchange_joins
 
-  #belongs_to :community
+  belongs_to :community
 
   has_secure_password
 

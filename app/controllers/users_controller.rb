@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     @user = User.find_by(id: session[:user_id])
   end
 
+  def show
+    @user = User.find_by(id: params[:id])
+  end
+
   def index
     if current_user
       redirect_to dashboard_path

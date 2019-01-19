@@ -1,0 +1,19 @@
+<h1>Sign up</h1>
+<%= form_for @user do |f| %>
+
+  <%= f.label :username, class:"" %><br />
+  <%= f.text_field :username, placeholder: "Enter username", autofocus: true, class: "form-control", type: "text"%>
+
+  <br />
+
+  <%= f.label :email, class:"" %><br />
+  <%= f.text_field :email, placeholder: "Enter email", autofocus: true, class: "form-control", type: "text"%>
+
+  <br />
+
+  <%= f.label :password, class:"col-sm-2 col-form-label" %><br />
+  <%= f.password_field :password, placeholder: "Enter password", class: "form-control", type: "text"%>
+
+  <%= f.submit %>
+
+<% end %>

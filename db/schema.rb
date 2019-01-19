@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_19_050725) do
+ActiveRecord::Schema.define(version: 2019_01_19_061001) do
+
+  create_table "communities", force: :cascade do |t|
+    t.integer "zipcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "category_id"
+    t.string "icon"
+    t.date "date"
+    t.text "description"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -19,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_01_19_050725) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.integer "community_id"
   end
 
 end

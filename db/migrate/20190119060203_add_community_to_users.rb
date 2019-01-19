@@ -1,5 +1,5 @@
 class AddCommunityToUsers < ActiveRecord::Migration[5.2]
   def change
-    community_id
+    add_column :users, :community_id, :integer
   end
 end

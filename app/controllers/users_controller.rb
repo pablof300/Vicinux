@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Welcome to the Vicinux #{@user.username}"
       session[:user_id] = @user.id
-      redirect_to dashboard_path(@user)
+      redirect_to dashboard_path
     else
       render 'new'
     end
@@ -19,6 +19,12 @@ class UsersController < ApplicationController
 
   def dashboard
     @user = User.find_by(id: session[:user_id])
+  end
+
+  def index
+    if current_user
+      redirect_to dashboard_path
+    end
   end
 
   private

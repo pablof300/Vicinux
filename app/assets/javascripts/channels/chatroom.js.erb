@@ -6,9 +6,13 @@ App.chatroom = App.cable.subscriptions.create("ChatroomChannel", {
     // Called when the subscription has been terminated by the server
 
   received(data) {
-    alert(<%= @cat %>)
-    $('#message-container').append(data.body);
-    return scroll_bottom();
+    var exchange_id = data.exchange_id
+    var curr_exchange = document.getElementById("exchange-header").getAttribute("data-current-exchange")
+
+    if(exchange_id == curr_exchange) {
+      $('#message-container').append(data.body);
+      return scroll_bottom();
+    }
   }
 }
 );

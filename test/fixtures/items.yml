@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  category: one
+  icon: MyString
+  date: 2019-01-19
+  description: MyText
+  name: MyString
+
+two:
+  user: two
+  category: two
+  icon: MyString
+  date: 2019-01-19
+  description: MyText
+  name: MyString

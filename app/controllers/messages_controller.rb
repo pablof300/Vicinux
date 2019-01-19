@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     message.exchange_id = params[:exchange_id]
     message.meta_id = params[:meta_id]
     if message.save
-      ActionCable.server.broadcast "chatroom_channel", body: message_render(message)
+      ActionCable.server.broadcast "chatroom_channel", body: message_render(message), exchange_id: message.exchange_id
     else
 
     end

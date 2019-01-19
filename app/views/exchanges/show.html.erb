@@ -1,28 +1,59 @@
-<h2 class="ui center aligned medium icon header">
-  <i class="circular orange inverted coffee icon"></i>
-  Say something
-</h2>
-
-<div class="ui two column grid">
-  <div class="twelve wide column">
-    <div class="ui fluid raised card chatbox">
-      <div class="content" id="messages">
-        <div class="ui feed" id="message-container">
-          <%= render @messages %>
-        </div>
+<div class="ui grid">
+  <div class="ui row" style="opacity: 0.8">
+    <div class="four wide column"></div>
+    <div class="three wide column">
+      <div class="ui large vertical buttons" style="margin-top: 2.5vh;">
+        <button class="ui button green">I am interested! Let's meet up</button>
+        <button class="ui button red">I am not interested</button>
       </div>
-      <div class="extra content">
-        <%= form_for(@message, html: { class: 'ui reply form', role: 'form' }, url: messages_path, remote: true) do |f| %>
-          <div class="field">
-            <div class="ui fluid icon input">
-              <%= f.text_field :body %>
-              <%= f.button '<i class="bordered inverted orange icon edit"></i>'.html_safe %>
-            </div>
+    </div>
+    <div class="two wide column"></div>
+    <div class="ui padded segment raised">
+      <h2 class="ui center aligned small icon header" data-current-exchange="<%= @exchange.id %>" id="exchange-header">
+        <i class="circular blue inverted coffee icon"></i>
+        Discuss details of the exchange
+      </h2>
+    </div>
+  </div>
+
+  <div class="ui row">
+    <div class="four wide column"></div>
+    <div class="eight wide column">
+      <div class="ui fluid piled center aligned segment">
+        <div class="floating ui teal label">Food</div>
+        <h2 class="ui icon header">
+          <div class="content">
+            Pack of 12 eggs
+            <div class="sub header">Manage your account settings and set e-mail preferences.</div>
           </div>
-          <%= hidden_field_tag 'exchange_id', @exchange.id %>
-          <%= hidden_field_tag 'meta_id', current_user.id %>
-        <% end %>
+        </h2>
       </div>
     </div>
   </div>
+
+  <div class="ui row">
+    <div class="four wide column"></div>
+    <div class="eight wide column">
+      <div class="ui fluid raised card chatbox">
+        <div class="content" id="messages">
+          <div class="ui feed" id="message-container">
+            <%= render @messages %>
+          </div>
+        </div>
+        <div class="extra content">
+          <%= form_for(@message, html: { class: 'ui reply form', role: 'form' }, url: messages_path, remote: true) do |f| %>
+            <div class="field">
+              <div class="ui fluid icon input">
+                <%= f.text_field :body %>
+                <%= f.button '<i class="bordered inverted orange icon edit"></i>'.html_safe %>
+              </div>
+            </div>
+            <%= hidden_field_tag 'exchange_id', @exchange.id %>
+            <%= hidden_field_tag 'meta_id', current_user.id %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

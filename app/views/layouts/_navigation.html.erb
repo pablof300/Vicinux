@@ -1,0 +1,36 @@
+<div class="ui small menu">
+  <div class="ui container">
+    <%= link_to "Vicinux", root_path, class: "item" %>
+
+    <% if current_user %>
+    <%= link_to "Place a request", root_path, class: "item" %>
+      <div class="menu">
+        <div class="ui dropdown item">
+          Trades <i class="dropdown icon"></i>
+          <div class="menu">
+            <%= link_to "Current trades (22)", root_path, class: "item" %>
+            <%= link_to "Messages (7)", root_path, class: "item" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="right menu">
+      <div class="ui dropdown item">
+        Account <i class="dropdown icon"></i>
+        <div class="menu">
+          <% if logged_in? %>
+            <%= link_to "Log out", logout_path, class: "item", method: :delete %>
+          <% else %>
+            <%= link_to "Log in", login_path, class: "item" %>
+          <% end %>
+        </div>
+      </div>
+      <% if !logged_in? %>
+        <div class="item">
+          <%= link_to "Sign up", signup_path, class: "ui primary button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   delete 'logout', to: 'sessions#destroy'
   get 'dashboard', to: 'users#dashboard'
+
+  mount ActionCable.server, at: '/cable'
 end

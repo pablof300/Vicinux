@@ -37,7 +37,7 @@ $(document).on('turbolinks:load', function() {
     $(this).closest('.message').transition('fade');
   });
 
-  $('.ui.rating').rating();
+  $('#user-rating').rating('disable');
 
   submit_message();
   scroll_bottom();

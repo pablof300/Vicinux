@@ -27,15 +27,17 @@ class UsersController < ApplicationController
     @current_trades = 0
     @user.exchanges.each do |exchange|
       if exchange.open
-        new_messages += 1
+        @new_messages += 1
       else
-        current_trades += 1
+        @current_trades += 1
       end
     end
   end
 
   def show
     @user = User.find(params[:id])
+    @trades = 0
+    @user.exchanges.each { |e| @trades += 1 if !e.open}
   end
 
   def index

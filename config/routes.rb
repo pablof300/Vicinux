@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'catch_all/index'
   resources :messages
   resources :exchanges
   resources :requests
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   get 'dashboard', to: 'users#dashboard'
 
-  get "*user" => "users#show"
+  get '*path', to: 'catch_all#index'
 
   mount ActionCable.server, at: '/cable'
 end

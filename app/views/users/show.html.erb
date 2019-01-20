@@ -7,11 +7,11 @@
       <div class="content">
         <a class="header"><%= @user.username %></a>
         <div class="meta">
-          <span class="date">20 trades</span>
+          <span class="date"><%= @trades %> trades</span>
         </div>
         <br />
         <div class="meta">
-          <span class="date">Joined two days ago</span>
+          <span class="date">Joined one day ago</span>
         </div>
         <div class="meta">
           <span class="date">Zip code <%= @user.community.zipcode %></span>
@@ -36,7 +36,9 @@
           My stuff
         </div>
       </h2>
-      <%= link_to 'Add more items', new_item_path, class: 'fluid ui button green basic' %>
+      <% if @user == current_user %>
+        <%= link_to 'Add more items', new_item_path, class: 'fluid ui button green basic' %>
+      <% end %>
       <div class="ui horizontal divider">
         All items
       </div>
@@ -54,8 +56,11 @@
                     <div class="ui segment three wide column center aligned" style="height: 30vh;">
                       <strong><h3><%= item.name %></h3></strong>
                       <p><%= item.description %></p>
+                      <% if @user == current_user %>
+                        <%= link_to 'Delete', item_path(item), class: "ui button yellow basic", method: :delete, remote: true %>
+                      <% else %>
 
-                      <%= link_to 'Delete', item_path(item), class: "ui button yellow basic", method: :delete, remote: true %>
+                      <% end %>
                     </div>
                   <% end %>
                 </div>

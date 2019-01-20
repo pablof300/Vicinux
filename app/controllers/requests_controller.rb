@@ -30,6 +30,12 @@ class RequestsController < ApplicationController
     #@inventories.each { |i| if Category.find_by(id: i.category_id) == @category then @inCategory.append(i) end}
   end
 
+  def destroy
+    @request = Request.find(params[:id])
+    @request.destroy
+    redirect_to requests_path
+  end
+
   private
 
   def request_params

@@ -3,8 +3,8 @@
     <div class="four wide column"></div>
     <div class="three wide column">
       <div class="ui large vertical buttons" style="margin-top: 2.5vh;">
-        <%= if @exchange.open %>
-          <%= link_to "I agree to trade", etrade_path(@exchange), class: 'ui button green' %>
+        <% if @exchange.open %>
+          <%= link_to "I agree to trade", etrade_path(id: @exchange.id), class: 'ui button green' %>
           <%= link_to "Dismiss", exchange_path(@exchange), method: :delete, class: 'ui button red'%>
         <% else %>
           <%= link_to "Done trading!", etrade_path(@exchange), class: 'ui button green' %>
@@ -15,7 +15,11 @@
     <div class="ui padded segment raised">
       <h2 class="ui center aligned small icon header" data-current-exchange="<%= @exchange.id %>" id="exchange-header">
         <i class="circular blue inverted coffee icon"></i>
+        <% if @exchange.open %>
         Discuss details of the exchange
+        <% else %>
+        Finalize your trade!  
+        <% end %>
       </h2>
     </div>
   </div>

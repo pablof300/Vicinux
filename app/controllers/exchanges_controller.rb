@@ -29,9 +29,10 @@ class ExchangesController < ApplicationController
   end
 
   def etrade
-    @exchange = Exchange.find(params[:id])
+    @exchange = Exchange.find_by(id: params[:id])
     @exchange.open = false
     @exchange.save
+    render :current
   end
 
   def pending

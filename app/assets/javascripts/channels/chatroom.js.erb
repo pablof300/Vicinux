@@ -7,7 +7,7 @@ App.chatroom = App.cable.subscriptions.create("ChatroomChannel", {
 
   received(data) {
     var exchange_id = data.exchange_id
-    var curr_exchange = document.getElementById("exchange-header").getAttribute("data-current-exchange")
+    var curr_exchange = document.getElementById("exchange-header").getAttribute("data-current-exchange");
 
     if(exchange_id == curr_exchange) {
       $('#message-container').append(data.body);

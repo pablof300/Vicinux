@@ -1,0 +1,42 @@
+<div class="ui grid stackable">
+  <div class="three wide column"></div>
+  <div class="ten wide column" style="margin-top: 2vh;">
+    <div class="ui very padded segment stacked center aligned" style="background: white; opacity: 0.9">
+      <%= image_tag @category.icon, class: 'ui small centered image' %>
+      <div class="ui massive label" style="margin-bottom: 10vh;">
+        Request Item - <%=@category.name%>
+      </div>
+      <%= form_for(@request, html: { class: 'ui form', role: 'form' }, url: requests_path) do |f| %>
+        <div class="field">
+          <div class="ui left icon input">
+            <%= f.text_field :item_name, placeholder: 'Item name' %>
+            <i class="user icon"></i>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <%= f.text_field :description, placeholder: 'Item description' %>
+            <i class="user icon"></i>
+          </div>
+        </div>
+        <%= f.hidden_field :category_id, value: @category.id %>
+        <%= f.submit 'Submit Request', class: 'ui button fluid blue big' %>
+      <% end %>
+      <%if !@inCategory.empty? %>
+          <table class="ui four column table selectable inverted">
+            <tbody>
+              <%@inCategory.each do |cat| %>
+                <tr>
+                  <td><%=cat.user.username%></td>
+                  <td class="center aligned">Pack of 12 eggs</td>
+                  <td></td>
+                  <td class="center aligned"><%=cat.description%></td>
+                  <td class="left aligned"><button class="ui button green basic">Contact User</td>
+                </tr>
+                <%end %>
+            <\tbody>
+          </table>
+      <%end%>
+   </div>
+ </div>
+</div>

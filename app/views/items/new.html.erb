@@ -1,24 +1,36 @@
-<div class="ui grid">
+<div class="ui grid centered">
   <div class="ui row" style="opacity: 0.8">
-    <div class="four wide column"></div>
-    <div class="eight wide column">
+    <div class="four wide column">
       <div class="ui segment padded">
         <h1 class="ui header center aligned">Add an item</h1>
       </div>
     </div>
   </div>
+  <%= form_for @item, html: { class: 'ui form' } do |f| %>
   <div class="ui row" style="opacity: 0.8">
     <div class="four wide column"></div>
     <div class="eight wide column">
       <div class="ui segment padded">
-        <%= form_for @item, html: { class: 'ui form' } do |f| %>
           <%= f.label :name %>
           <%= f.text_field :name, placeholder: "Name of the item" %>
           <br /><br />
           <%= f.label :description %>
           <%= f.text_field :description, placeholder: "Brief description of the item" %>
-        <% end %>
+          <br /><br />
+          <%= f.label :category %>
+          <div style="display: block;">
+            <%= f.select :category_id, Category.all.collect { |car| [car.name, car.id] }, {}, { class: 'ui selection dropdown' } %>
+          </div>
       </div>
     </div>
   </div>
+  <div class="ui row" style="opacity: 0.8; margin-top: 25vh;">
+    <div class="four wide column"></div>
+    <div class="eight wide column">
+      <div class="ui segment padded">
+        <%= f.submit 'Submit', class: "ui fluid button green basic" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
 </div>

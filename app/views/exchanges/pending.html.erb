@@ -7,17 +7,18 @@
         <h2 class="ui icon header center aligned icon header">
           <i class="envelope icon"></i>
           <div class="content">
-            Requests
+            Pending messages
           </div>
         </h2>
       </div>
 
-      <% current_user.requests.each do |req| %>
+      <% current_user.exchanges.each do |exchange| %>
       <div class="ui row" style="margin-bottom: 3vh;">
         <div class="ui segment center aligned">
-          <h3>Looking for <%= req.item_name %></h3>
-          <h5><%= req.description %></h5>
-          <%= link_to 'Delete', request_path(req), method: :delete, class: 'ui fluid button red basic' %>
+          <h3>Trading for <%= Request.find_by(id: exchange.meta_id).item_name %></h3>
+          <h5><%= Request.find_by(id: exchange.meta_id).description %></h5>
+          <h4>with <strong><%= Request.find_by(id: exchange.meta_id).user.username %></strong></h4>
+          <%= link_to 'Open', exchange_path(exchange), class: 'ui fluid button green basic' %>
         </div>
       </div>
       <% end %>

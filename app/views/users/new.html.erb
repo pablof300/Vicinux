@@ -21,14 +21,7 @@
     <%= f.label :password%><br />
     <%= f.password_field :password, placeholder: "Enter password", class: "form-control", type: "text"%>
   </div>
-  <div class="field">
-    <div class="ui checkbox">
-      <input type="checkbox" tabindex="0" class="hidden">
-      <label>I agree to the Terms and Conditions</label>
-    </div>
-  </div>
-  <button class="ui blue button" type="submit">Create User</button>
-    <%= f.submit 'Create user', class: '' %>
+  <%= f.submit 'Create user', class: 'ui blue button' %>
 <% end %>
 <h3 class="ui horizontal divider header">
 </div>

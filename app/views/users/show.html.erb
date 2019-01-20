@@ -30,13 +30,13 @@
     <div class="ui very padded segment stacked" style="background: white; opacity: 0.9">
 
       <h2 class="ui header center aligned" style="margin-bottom: 5vh;">
-        <img class="ui circular image" src="https://semantic-ui.com/images/avatar2/large/patrick.png">
+        <%= image_tag 'inventory.png', class: 'ui circular image' %>
 
         <div class="content">
           My stuff
         </div>
       </h2>
-      <%= link_to 'Add more items', root_path, class: 'fluid ui button green basic' %>
+      <%= link_to 'Add more items', new_item_path, class: 'fluid ui button green basic' %>
       <div class="ui horizontal divider">
         All items
       </div>
@@ -45,16 +45,17 @@
           <% current_items = [] %>
           <% @user.items.each { |i| current_items.append(i) if i.category == category } %>
           <% if !current_items.empty? %>
-            <div class="ui row">
+            <div class="ui row" style="margin-bottom: 2vh;">
               <div class="ui raised segment center aligned">
                 <div class="ui top attached label"><%= category.name %></div>
                 <div class="ui grid">
                   <% current_items.each do |item| %>
                     <div class="one wide column"></div>
-                    <div class="ui segment three wide column padded center aligned">
-                      <strong><h3>Dozen eggs</h3></strong>
-                      <p>Bought from Publix aro...</p>
-                      <button class="ui button yellow basic">Delete</button>
+                    <div class="ui segment three wide column center aligned" style="height: 30vh;">
+                      <strong><h3><%= item.name %></h3></strong>
+                      <p><%= item.description %></p>
+
+                      <%= link_to 'Delete', item_path(item), class: "ui button yellow basic", method: :delete, remote: true %>
                     </div>
                   <% end %>
                 </div>

@@ -1,0 +1,24 @@
+<div class="ui grid">
+  <div class="ui row" style="opacity: 0.8">
+    <div class="four wide column"></div>
+    <div class="eight wide column">
+      <div class="ui segment padded">
+        <h1 class="ui header center aligned">Add an item</h1>
+      </div>
+    </div>
+  </div>
+  <div class="ui row" style="opacity: 0.8">
+    <div class="four wide column"></div>
+    <div class="eight wide column">
+      <div class="ui segment padded">
+        <%= form_for @item, html: { class: 'ui form' } do |f| %>
+          <%= f.label :name %>
+          <%= f.text_field :name, placeholder: "Name of the item" %>
+          <br /><br />
+          <%= f.label :description %>
+          <%= f.text_field :description, placeholder: "Brief description of the item" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

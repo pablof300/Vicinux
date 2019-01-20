@@ -50,20 +50,23 @@
               <i class="filter icon"></i>
               <span class="text">Select a category</span>
               <div class="menu">
-                <div class="item">Food</div>
-                <div class="item">Cars</div>
-                <div class="item">Dishes</div>
+                <% Category.all.each do |category| %>
+                  <%= link_to new_request_path(category_id: category.id), class: 'item' do %>
+                    <%= image_tag category.icon %>
+                    <%=  category.name %>
+                  <% end %>
+                <%end%>
               </div>
             </div>
 
             <br />
 
-            <div class="ui animated button basic teal" id="cats" tabindex="0">
-              <div class="visible content">Place a request</div>
+            <%= link_to requests_path, class: 'ui animated button basic teal', id: 'cats' do %>
+              <div class="visible content">View my requests</div>
               <div class="hidden content">
                 <i class="right arrow icon"></i>
               </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>

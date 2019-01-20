@@ -5,7 +5,7 @@
         <img src="https://semantic-ui.com/images/avatar/large/elliot.jpg" class="visible content">
       </div>
       <div class="content">
-        <a class="header">pablof300</a>
+        <a class="header"><%= @user.username %></a>
         <div class="meta">
           <span class="date">20 trades</span>
         </div>
@@ -14,7 +14,7 @@
           <span class="date">Joined two days ago</span>
         </div>
         <div class="meta">
-          <span class="date">Zip code 33178</span>
+          <span class="date">Zip code <%= @user.community.zipcode %></span>
         </div>
       </div>
       <div class="extra content">
@@ -28,108 +28,46 @@
   <div class="three wide column"></div>
   <div class="ten wide column" style="margin-top: 2vh;">
     <div class="ui very padded segment stacked" style="background: white; opacity: 0.9">
+
       <h2 class="ui header center aligned" style="margin-bottom: 5vh;">
         <img class="ui circular image" src="https://semantic-ui.com/images/avatar2/large/patrick.png">
+
         <div class="content">
-          <%= current_user.username %>
+          My stuff
         </div>
       </h2>
-      <div class="ui two column grid">
-        <div class="column">
-          <div class="ui raised segment center aligned">
-            <div class="floating ui red label large">22</div>
-            <h2 class="ui header">
-              Current Trades
-            </h2>
-            <h6 style="padding: 0; margin-top: -2vh;">All the trades you've agreed on</h6>
-            <div class="ui animated button basic purple" tabindex="0">
-              <div class="visible content">You have 13 trades to view</div>
-              <div class="hidden content">
-                <i class="right arrow icon"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="ui raised segment center aligned">
-            <div class="floating ui red label large">22</div>
-            <h2 class="ui header">
-              New Messages
-            </h2>
-            <h6 style="padding: 0; margin-top: -2vh;">All the trades you've agreed on</h6>
-            <div class="ui animated button basic green" tabindex="0">
-              <div class="visible content">You have 2 messages to view</div>
-              <div class="hidden content">
-                <i class="right arrow icon"></i>
-              </div>
-            </div>
-          </div>
-        </div>
+      <%= link_to 'Add more items', root_path, class: 'fluid ui button green basic' %>
+      <div class="ui horizontal divider">
+        All items
       </div>
-      <div class="ui one column grid">
-        <div class="column">
-          <div class="ui raised segment center aligned">
-            <h2 class="ui header" style="margin-top:1vh; margin-bottom: 0;">What do you need from your neighbors?</h2>
-            <br />
-
-            <div class="ui fluid floating dropdown labeled search icon button" style='margin-bottom: 1vh;'>
-              <i class="filter icon"></i>
-              <span class="text">Select a category</span>
-              <div class="menu">
-                <div class="item">Food</div>
-                <div class="item">Cars</div>
-                <div class="item">Dishes</div>
+      <% if !@user.items.empty?%>
+        <% Category.all.each do |category| %>
+          <% current_items = [] %>
+          <% @user.items.each { |i| current_items.append(i) if i.category == category } %>
+          <% if !current_items.empty? %>
+            <div class="ui row">
+              <div class="ui raised segment center aligned">
+                <div class="ui top attached label"><%= category.name %></div>
+                <div class="ui grid">
+                  <% current_items.each do |item| %>
+                    <div class="one wide column"></div>
+                    <div class="ui segment three wide column padded center aligned">
+                      <strong><h3>Dozen eggs</h3></strong>
+                      <p>Bought from Publix aro...</p>
+                      <button class="ui button yellow basic">Delete</button>
+                    </div>
+                  <% end %>
+                </div>
               </div>
             </div>
-
-            <br />
-
-            <div class="ui animated button basic teal" id="cats" tabindex="0">
-              <div class="visible content">Place a request</div>
-              <div class="hidden content">
-                <i class="right arrow icon"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="ui horizontal divider" style="margin-top: 5vh;">
-        Your neighbors' requests
-      </div>
-
-      <table class="ui four column table selectable inverted">
-        <thead>
-          <tr><th class="">Neighbor</th>
-          <th class="center aligned">Item</th>
-          <th class="right aligned"></th>
-          <th class="right aligned">Do you have some to spare?</th>
-          <th></th>
-        </tr></thead>
-        <tbody>
-          <tr>
-            <td>John</td>
-            <td class="center aligned">Pack of 12 eggs</td>
-            <td></td>
-            <td class="center aligned"><button class="ui button red basic">No</td>
-            <td class="left aligned"><button class="ui button green basic">Yes</td>
-          </tr>
-          <tr>
-            <td>John</td>
-            <td class="center aligned">Pack of 12 eggs</td>
-            <td></td>
-            <td class="center aligned"><button class="ui button red basic">No</td>
-            <td class="left aligned"><button class="ui button green basic">Yes</td>
-          </tr>
-          <tr>
-            <td>John</td>
-            <td class="center aligned">Pack of 12 eggs</td>
-            <td></td>
-            <td class="center aligned"><button class="ui button red basic">No</td>
-            <td class="left aligned"><button class="ui button green basic">Yes</td>
-          </tr>
-        </tbody>
-      </table>
-
+          <% end %>
+        <% end %>
+      <% else %>
+        <h4 class="ui center aligned icon header">
+          <i class="hourglass outline users icon"></i>
+          No items :( maybe add some?
+        </h4>
+      <% end %>
     </div>
   </div>
 

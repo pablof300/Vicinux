@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   has_many :requests
   has_many :items
-  has_many :reviews
   has_many :exchange_joins
   has_many :exchanges, through: :exchange_joins
 

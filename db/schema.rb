@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_19_223409) do
+ActiveRecord::Schema.define(version: 2019_01_19_065630) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.string "icon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "icon"
   end
 
   create_table "communities", force: :cascade do |t|
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 2019_01_19_223409) do
   create_table "requests", force: :cascade do |t|
     t.integer "user_id"
     t.boolean "open"
+    t.string "item_name"
+    t.string "description"
     t.integer "meta_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -71,11 +73,11 @@ ActiveRecord::Schema.define(version: 2019_01_19_223409) do
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "name"
+    t.string "username"
+    t.integer "community_id"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "username"
-    t.integer "community_id"
   end
 
 end

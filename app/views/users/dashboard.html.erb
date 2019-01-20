@@ -11,32 +11,32 @@
       <div class="ui two column grid">
         <div class="column">
           <div class="ui raised segment center aligned">
-            <div class="floating ui red label large">22</div>
+            <div class="floating ui red label large"><%= @current_trades %></div>
             <h2 class="ui header">
               Current Trades
             </h2>
             <h6 style="padding: 0; margin-top: -2vh;">All the trades you've agreed on</h6>
-            <div class="ui animated button basic purple" tabindex="0">
-              <div class="visible content">You have 13 trades to view</div>
+            <%= link_to current_path, class: 'ui animated button basic purple' do %>
+              <div class="visible content">You have <%= @current_trades %> trades to view</div>
               <div class="hidden content">
                 <i class="right arrow icon"></i>
               </div>
-            </div>
+            <% end %>
           </div>
         </div>
         <div class="column">
           <div class="ui raised segment center aligned">
-            <div class="floating ui red label large">22</div>
+            <div class="floating ui red label large"><%= @new_messages %></div>
             <h2 class="ui header">
               New Messages
             </h2>
             <h6 style="padding: 0; margin-top: -2vh;">All the trades you've agreed on</h6>
-            <div class="ui animated button basic green" tabindex="0">
-              <div class="visible content">You have 2 messages to view</div>
+            <%= link_to pending_path, class: 'ui animated button basic green' do %>
+              <div class="visible content">You have <%= @new_messages %> messages to view</div>
               <div class="hidden content">
                 <i class="right arrow icon"></i>
               </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -83,27 +83,23 @@
           <th></th>
         </tr></thead>
         <tbody>
-          <tr>
-            <td>John</td>
-            <td class="center aligned">Pack of 12 eggs</td>
-            <td></td>
-            <td class="center aligned"><button class="ui button red basic">No</td>
-            <td class="left aligned"><button class="ui button green basic">Yes</td>
-          </tr>
-          <tr>
-            <td>John</td>
-            <td class="center aligned">Pack of 12 eggs</td>
-            <td></td>
-            <td class="center aligned"><button class="ui button red basic">No</td>
-            <td class="left aligned"><button class="ui button green basic">Yes</td>
-          </tr>
-          <tr>
-            <td>John</td>
-            <td class="center aligned">Pack of 12 eggs</td>
-            <td></td>
-            <td class="center aligned"><button class="ui button red basic">No</td>
-            <td class="left aligned"><button class="ui button green basic">Yes</td>
-          </tr>
+          <% Request.all.each do |req|%>
+          <% if req.user != current_user %>
+            <tr id="request-<%=req.id%>">
+              <td><%= req.user.username %></td>
+              <td class="center aligned"><%= req.item_name %></td>
+              <td></td>
+              <% already_accepted = [] %>
+              <% current_user.exchanges.each { |exchange| already_accepted.append(exchange.meta_id) } %>
+              <%if already_accepted.include?(req.id) %>
+                <td class="left aligned"><%= link_to 'Already Messaged', dashboard_path, method: :post, class: 'ui button orange basic' %></td>
+              <%else%>
+                <td class="center aligned"><button class="ui button red basic" onclick="hideRequest(<%=req.id%>)">No</td>
+                <td class="left aligned"><%= link_to 'Yes', exchanges_path(request_id: req.id), method: :post, class: 'ui button green basic' %></td>
+              <%end%>
+            </tr>
+          <% end %>
+          <% end %>
         </tbody>
       </table>
 

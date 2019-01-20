@@ -3,8 +3,12 @@
     <div class="four wide column"></div>
     <div class="three wide column">
       <div class="ui large vertical buttons" style="margin-top: 2.5vh;">
-        <button class="ui button green">I am interested! Let's meet up</button>
-        <button class="ui button red">I am not interested</button>
+        <%= if @exchange.open %>
+          <%= link_to "I agree to trade", etrade_path(@exchange), class: 'ui button green' %>
+          <%= link_to "Dismiss", exchange_path(@exchange), method: :delete, class: 'ui button red'%>
+        <% else %>
+          <%= link_to "Done trading!", etrade_path(@exchange), class: 'ui button green' %>
+        <% end %>
       </div>
     </div>
     <div class="two wide column"></div>
@@ -20,11 +24,11 @@
     <div class="four wide column"></div>
     <div class="eight wide column">
       <div class="ui fluid piled center aligned segment">
-        <div class="floating ui teal label">Food</div>
+        <div class="floating ui teal label"><%= Category.find_by(id: @request.meta_id) %></div>
         <h2 class="ui icon header">
           <div class="content">
-            Pack of 12 eggs
-            <div class="sub header">Manage your account settings and set e-mail preferences.</div>
+            <%= @request.item_name %>
+            <div class="sub header"><%= @request.description %></div>
           </div>
         </h2>
       </div>

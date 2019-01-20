@@ -4,12 +4,13 @@
 
     <% if current_user %>
     <%= link_to "Place a request", root_path, class: "item" %>
+    <%= link_to "View my profile", user_path(current_user), class: "item" %>
       <div class="menu">
         <div class="ui dropdown item">
           Trades <i class="dropdown icon"></i>
           <div class="menu">
-            <%= link_to "Current trades (22)", root_path, class: "item" %>
-            <%= link_to "Messages (7)", root_path, class: "item" %>
+            <%= link_to "Current trades", root_path, class: "item" %>
+            <%= link_to "Messages", root_path, class: "item" %>
           </div>
         </div>
       </div>

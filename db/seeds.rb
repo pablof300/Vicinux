@@ -13,3 +13,10 @@ Category.create(name: "Electronics", icon: "electronics.png")
 Category.create(name: "Furniture", icon: "furniture.png")
 Category.create(name: "Other", icon: "misc.png")
 Category.create(name: "Non-perishable", icon: "nonperishable.png")
+
+community = Community.create(zipcode: 32611)
+
+User.create(username: 'pablo', email: "pablo@gmail.com", password: '123456', community: community)
+User.create(username: 'dylan', email: "dylan@gmail.com", password: '123456', community: community)
+User.create(username: 'charles', email: "charles@gmail.com", password: '123456', community: community)
+User.create(username: 'lisa', email: "lisa@gmail.com", password: '123456', community: community)

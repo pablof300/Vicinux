@@ -11,7 +11,7 @@ class ExchangesController < ApplicationController
 
   def create
     request_id = params[:request_id]
-    @exchange = Exchange.new(meta_id: request_id, open: true)
+    @exchange = Exchange.new(meta_id: request_id, open: true, incomplete: true)
     @exchange.users.append(current_user)
     @exchange.users.append(Request.find_by(id: request_id).user)
     if @exchange.save

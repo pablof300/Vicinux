@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_01_19_065630) do
   create_table "exchanges", force: :cascade do |t|
     t.integer "meta_id"
     t.boolean "open"
+    t.boolean "incomplete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

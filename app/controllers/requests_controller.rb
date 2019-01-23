@@ -36,6 +36,23 @@ class RequestsController < ApplicationController
     redirect_to requests_path
   end
 
+  def trade_now
+    @request = Request.new
+    @request.user = current_user
+    @request.open = true
+    @request.item_name = params[:item_name]
+    @request.description = params[:description]
+    @request.meta_id = params[:category_id]
+    @request.save
+
+    @exchange = Exchange.new(meta_id: @request.id, open: true, incomplete: true)
+    @exchange.users.append(current_user)
+    @exchange.users.append(User.find_by(id: params[:user_id]))
+    if @exchange.save
+      redirect_to exchange_path(@exchange)
+    end
+  end
+
   private
 
   def request_params

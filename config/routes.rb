@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'current', to: 'exchanges#current'
 
   get 'etrade', to: 'exchanges#etrade'
+  get 'tradenow', to: 'requests#trade_now'
 
   post 'login', to: "sessions#create"
 

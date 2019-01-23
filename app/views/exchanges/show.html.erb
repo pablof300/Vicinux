@@ -18,7 +18,7 @@
         <% if @exchange.open %>
         Discuss details of the exchange
         <% else %>
-        Finalize your trade!  
+        Finalize your trade!
         <% end %>
       </h2>
     </div>
@@ -28,7 +28,7 @@
     <div class="four wide column"></div>
     <div class="eight wide column">
       <div class="ui fluid piled center aligned segment">
-        <div class="floating ui teal label"><%= Category.find_by(id: @request.meta_id) %></div>
+        <div class="floating ui teal label">Food</div>
         <h2 class="ui icon header">
           <div class="content">
             <%= @request.item_name %>

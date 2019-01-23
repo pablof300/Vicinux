@@ -59,7 +59,7 @@
                       <% if @user == current_user %>
                         <%= link_to 'Delete', item_path(item), class: "ui button yellow basic", method: :delete, remote: true %>
                       <% else %>
-
+                        <%= link_to 'Trade', tradenow_path(item_name: item.name, description: item.description, category_id: item.category_id, user_id: @user.id), class: "ui button yellow basic" %>
                       <% end %>
                     </div>
                   <% end %>
